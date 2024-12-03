@@ -1,0 +1,1 @@
+// yönlendirmelerin yapılacağı kısım

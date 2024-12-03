@@ -1,0 +1,1 @@
+// acilis ekrani yüklenme

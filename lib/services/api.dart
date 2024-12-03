@@ -1,0 +1,1 @@
+// api bağlantıları ve verilen çekileceği kısım

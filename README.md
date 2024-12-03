@@ -1,2 +1,3 @@
-# TinoNews
-Istinye University 2320161040 Project
+# flutter_app
+
+A new Flutter project.
