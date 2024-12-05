@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'routes/app_router.dart';
+import 'core/routes.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized(); // Flutter widget'larını başlat

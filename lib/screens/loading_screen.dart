@@ -1,5 +1,9 @@
+import 'package:dotlottie_loader/dotlottie_loader.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:go_router/go_router.dart';
+import 'package:lottie/lottie.dart';
+
+import '../core/constants.dart';
 
 class LoadingScreen extends StatelessWidget {
   const LoadingScreen({super.key});
@@ -7,42 +11,44 @@ class LoadingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: arkaplanRenkim,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           // Logo ve yükleme göstergesi bölümü
-          Container(
+          SizedBox(
             width: double.infinity,
             child: Column(
               children: [
                 // Logo bölümü
-                Container(
-                  width: 150,
-                  height: 150,
+                SizedBox(
+                  width: 250,
+                  height: 250,
                   child: Image.asset(
                     'assets/images/logo.jpg',
                     fit: BoxFit.contain,
                   ),
                 ),
-
-                const SizedBox(height: 30),
-
-                // Yükleme ikonu
-                const Icon(
-                  CupertinoIcons.arrow_2_circlepath,
-                  size: 40,
-                  color: Colors.blue,
-                ),
-
                 const SizedBox(height: 20),
 
-                // Yükleniyor yazısı
-                const Text(
-                  'Yükleniyor...',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
+                // Yükleme animasyonu
+                InkWell(
+                  onTap: () {
+                    // Yönlendirme yapıyoruz
+                    context.go("/home");
+                  },
+                  child: DotLottieLoader.fromAsset(
+                    "assets/motions/loading.lottie",
+                    frameBuilder: (BuildContext ctx, DotLottie? dotlottie) {
+                      if (dotlottie != null &&
+                          dotlottie.animations.isNotEmpty) {
+                        // Animasyon var, göster
+                        return Lottie.memory(dotlottie.animations.values.first);
+                      } else {
+                        // Animasyon yoksa bir yükleme göstergesi göster
+                        return Center(child: CircularProgressIndicator());
+                      }
+                    },
                   ),
                 ),
               ],
