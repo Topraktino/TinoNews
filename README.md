@@ -9,7 +9,7 @@
 
 ## Proje Hakkında
 
-[Müzik dinlemek]
+[Tino News]
 
   
 
@@ -26,9 +26,9 @@ https://github.com/Topraktino
 
 ## Özellikler
 
-- [Ana özellik 1]
+- [Kolay arayüzü ile istediğiniz haber kategorisine hızlı erişim]
 
-- [Ana özellik 2]
+- [Detaylı ve açıklayıcı haberler]
 
 - [Ana özellik 3]
 
@@ -42,11 +42,6 @@ https://github.com/Topraktino
 
 - [Diğer teknolojiler]
 
-  
-
-## Başlangıç
-
-  
 
 ### Gereksinimler
 
