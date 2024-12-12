@@ -22,10 +22,10 @@ class LoadingScreen extends StatelessWidget {
               children: [
                 // Logo bölümü
                 SizedBox(
-                  width: 250,
-                  height: 250,
+                  width: 350,
+                  height: 350,
                   child: Image.asset(
-                    'assets/images/logo.jpg',
+                    'assets/images/logo.png',
                     fit: BoxFit.contain,
                   ),
                 ),

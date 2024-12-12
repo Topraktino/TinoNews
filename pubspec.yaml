@@ -24,7 +24,6 @@ dev_dependencies:
 flutter:
   uses-material-design: true    # Material Design widget'larını kullanmak için
   assets:                       # Projedeki dosya kaynakları
-    - assets/images/           # Görseller için
-    - assets/icons/           # İkonlar için
-    - assets/languages/       # Dil dosyaları için
-    - assets/motions/        # Animasyon dosyaları için
+    - assets/images/            # Görseller için
+    - assets/icons/             # İkonlar için
+    - assets/motions/           # Animasyon dosyaları için
