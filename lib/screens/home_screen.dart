@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'add_news_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -104,6 +105,17 @@ class _NewsPageState extends State<NewsPage> {
               setState(() {
                 currentLanguage = currentLanguage == 'tr' ? 'en' : 'tr';
               });
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.add),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const AddNewsScreen(),
+                ),
+              );
             },
           ),
         ],
