@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'news_provider.dart';
 import 'add_news_screen.dart';
+import 'news_detail.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: NewsPage(),
-    );
+    return const NewsPage();
   }
 }
 
@@ -32,51 +32,17 @@ class _NewsPageState extends State<NewsPage> {
       'title': 'Haberler',
       'darkMode': 'Karanlık Mod',
       'lightMode': 'Aydınlık Mod',
-      'news1_title': 'Milli takımdan galibiyet!',
-      'news1_description': 'MACARİSTANI GEÇİYORUZ!',
-      'news1_details':
-          '92-66 Skor ile Macaristan karşısında ezici üstünlükle grubumuzdaki ilk galibiyeti alıyoruz!',
-      'news2_title': 'Capybaraların nesli tehlikede!',
-      'news2_description': 'Bu hayvanın nesli tükeniyor!',
-      'news2_details':
-          'Capybara avcılar tarafından tehdit ediliyor ve doğal alanları yok ediliyor.',
-      'news3_title': 'Mete Gazoz tekrar Avrupa Şampiyonu',
-      'news3_description': 'Altın madalyanın kazananı oldu.',
-      'news3_details':
-          'Yarı finalde Almanyayı 5-0 yenerek finale yükselen Mete Gazoz, Slovenyayı da yenerek şampiyon oldu.',
-      'news4_title': 'Son Dakika!',
-      'news4_description': 'Doğalgaza %80in üzerinde zam bekleniyor!!!',
-      'news4_details':
-          'İçişleri Bakanımız Keyvan Arasteh yaptığı son açıklamada “Doğalgaza %80 civarında zam yapacağız.” dedi',
-      'news5_title': 'Fenerbahçe Avrupada mağlup oldu',
-      'news5_description': 'Athletic Bilbao Takımından Çok İyi Oyun!',
-      'news5_details':
-          'Athletic Bilbao ile Avrupa maçına çıkan temsilcimiz Fenerbahçe, ne yazık ki 2-0 gibi üzücü bir skorla mağlup oldu. GOLLER Dakika 1 - Inaki Williams, Dakika 53 - Inaki Williams',
+      'addNews': 'Haber Ekle',
+      'noNews': 'Henüz haber eklenmedi.',
+      'imageError': 'Resim yüklenemedi',
     },
     'en': {
       'title': 'News',
       'darkMode': 'Dark Mode',
       'lightMode': 'Light Mode',
-      'news1_title': 'National team victory!',
-      'news1_description': 'WE DEFEATED HUNGARY!',
-      'news1_details':
-          'With a score of 92-66, we secured our first group win against Hungary!',
-      'news2_title': 'Capybaras are endangered!',
-      'news2_description': 'This animal is on the brink of extinction!',
-      'news2_details':
-          'Capybaras are threatened by hunters and destruction of their habitats.',
-      'news3_title': 'Mete Gazoz is European Champion again',
-      'news3_description': 'Won the gold medal.',
-      'news3_details':
-          'After beating Germany 5-0 in the semi-finals, Mete Gazoz also won the final against Slovenia!',
-      'news4_title': 'Breaking News!',
-      'news4_description': 'Over 80% hike expected!!!',
-      'news4_details':
-          'Our Interior Minister Keyvan Arasteh said in his latest statement, “We will increase natural gas by around 80%.”',
-      'news5_title': 'Fenerbahçe defeated in Europe',
-      'news5_description': 'Very Good Game by Athletic Bilbao!',
-      'news5_details':
-          'Our representative Fenerbahçe, who played a European match against Athletic Bilbao, unfortunately lost with a sad score of 2-0. Goals minute 1 - Inaki Williams, minute 53 - Inaki Williams',
+      'addNews': 'Add News',
+      'noNews': 'No news added yet.',
+      'imageError': 'Image could not be loaded',
     },
   };
 
@@ -109,137 +75,50 @@ class _NewsPageState extends State<NewsPage> {
           ),
           IconButton(
             icon: const Icon(Icons.add),
-            onPressed: () {
-              Navigator.push(
+            onPressed: () async {
+              final result = await Navigator.push(
                 context,
-                MaterialPageRoute(
-                  builder: (context) => const AddNewsScreen(),
-                ),
+                MaterialPageRoute(builder: (context) => const AddNewsScreen()),
               );
+
+              if (result == true) {
+                setState(() {}); // Ekranı yenile
+              }
             },
           ),
         ],
       ),
-      body: Column(
-        children: [
-          const SizedBox(height: 10), // Üst boşluk
-          Expanded(
-            child: Container(
-              color: darkMode ? Colors.black : Colors.white,
-              child: ListView(
-                children: [
-                  GestureDetector(
-                    child: NewsCard(
-                      title: translate('news1_title'),
-                      description: translate('news1_description'),
-                      imagePath: 'assets/images/haber1.jpg',
-                    ),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => NewsDetail(
-                            translate('news1_title'),
-                            translate('news1_details'),
-                            'assets/images/haber1.jpg',
+      body: Consumer<NewsProvider>(
+        builder: (context, newsProvider, child) {
+          return newsProvider.newsList.isEmpty
+              ? Center(child: Text(translate('noNews')))
+              : ListView.builder(
+                  itemCount: newsProvider.newsList.length,
+                  itemBuilder: (context, index) {
+                    final news = newsProvider.newsList[index];
+                    return GestureDetector(
+                      child: NewsCard(
+                        title: news['title'] ?? '',
+                        description: news['description'] ?? '',
+                        imagePath: news['imageUrl'] ?? '',
+                        translate: translate,
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => NewsDetail(
+                              news['title'] ?? '',
+                              news['details'] ?? '',
+                              news['imageUrl'] ?? '',
+                            ),
                           ),
-                        ),
-                      );
-                    },
-                  ),
-                  const SizedBox(height: 10),
-                  GestureDetector(
-                    child: NewsCard(
-                      title: translate('news2_title'),
-                      description: translate('news2_description'),
-                      imagePath: 'assets/images/haber2.jpg',
-                    ),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => NewsDetail(
-                            translate('news2_title'),
-                            translate('news2_details'),
-                            'assets/images/haber2.jpg',
-                          ),
-                        ),
-                      );
-                    },
-                  ),
-                  const SizedBox(height: 10),
-                  GestureDetector(
-                    child: NewsCard(
-                      title: translate('news4_title'),
-                      description: translate('news4_description'),
-                      imagePath: 'assets/images/sondakika.jpg',
-                    ),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => NewsDetail(
-                            translate('news4_title'),
-                            translate('news4_details'),
-                            'assets/images/sondakika.jpg',
-                          ),
-                        ),
-                      );
-                    },
-                  ),
-                  const SizedBox(height: 10),
-                  GestureDetector(
-                    child: NewsCard(
-                      title: translate('news5_title'),
-                      description: translate('news5_description'),
-                      imagePath: 'assets/images/fbbilbao.jpg',
-                    ),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => NewsDetail(
-                            translate('news5_title'),
-                            translate('news5_details'),
-                            'assets/images/fbbilbao.jpg',
-                          ),
-                        ),
-                      );
-                    },
-                  ),
-                  const SizedBox(height: 12),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => NewsDetail(
-                            translate('news3_title'),
-                            translate('news3_details'),
-                            'assets/images/haber3.jpg',
-                          ),
-                        ),
-                      );
-                    },
-                    child: NewsCard(
-                      title: translate('news3_title'),
-                      description: translate('news3_description'),
-                      imagePath: 'assets/images/haber3.jpg',
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 10), // Alt ve üst boşluk
-            child: Text(
-              "Toprak Egemen Coşkun tarafından geliştirilmiştir.",
-              style: TextStyle(fontSize: 14, color: Colors.grey),
-              textAlign: TextAlign.center,
-            ),
-          ),
-        ],
+                        );
+                      },
+                    );
+                  },
+                );
+        },
       ),
     );
   }
@@ -249,12 +128,14 @@ class NewsCard extends StatelessWidget {
   final String title;
   final String description;
   final String imagePath;
+  final String Function(String) translate;
 
   const NewsCard({
     super.key,
     required this.title,
     required this.description,
     required this.imagePath,
+    required this.translate,
   });
 
   @override
@@ -265,11 +146,13 @@ class NewsCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.asset(
+          Image.network(
             imagePath,
             fit: BoxFit.cover,
             height: 150,
             width: double.infinity,
+            errorBuilder: (context, error, stackTrace) =>
+                Text(translate('imageError')),
           ),
           Padding(
             padding: const EdgeInsets.all(10),
@@ -292,42 +175,6 @@ class NewsCard extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class NewsDetail extends StatelessWidget {
-  final String title;
-  final String description;
-  final String imagePath;
-
-  const NewsDetail(this.title, this.description, this.imagePath, {super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Image.asset(
-              imagePath,
-              width: double.infinity,
-              fit: BoxFit.cover,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(15),
-              child: Text(
-                description,
-                style: const TextStyle(fontSize: 16),
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }
