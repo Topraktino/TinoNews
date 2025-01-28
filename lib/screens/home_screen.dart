@@ -54,8 +54,12 @@ class _NewsPageState extends State<NewsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(translate('title')),
         backgroundColor: darkMode ? Colors.black : Colors.blue,
+        title: Image.asset(
+          'assets/images/logo.png',
+          height: 80, // Logonun yüksekliği
+        ),
+        centerTitle: true, // Logo AppBar'ın ortasına hizalanır
         actions: [
           IconButton(
             icon: Icon(darkMode ? Icons.dark_mode : Icons.light_mode),
