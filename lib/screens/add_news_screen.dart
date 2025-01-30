@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'news_provider.dart';
+import '../providers/news_provider.dart';
 
 class AddNewsScreen extends StatefulWidget {
   const AddNewsScreen({super.key});

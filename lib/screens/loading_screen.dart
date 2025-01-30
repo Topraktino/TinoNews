@@ -15,12 +15,10 @@ class LoadingScreen extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          // Logo ve yükleme göstergesi bölümü
           SizedBox(
             width: double.infinity,
             child: Column(
               children: [
-                // Logo bölümü
                 SizedBox(
                   width: 350,
                   height: 350,
@@ -30,11 +28,8 @@ class LoadingScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 20),
-
-                // Yükleme animasyonu
                 InkWell(
                   onTap: () {
-                    // Yönlendirme yapıyoruz
                     context.go("/home");
                   },
                   child: DotLottieLoader.fromAsset(
@@ -42,10 +37,8 @@ class LoadingScreen extends StatelessWidget {
                     frameBuilder: (BuildContext ctx, DotLottie? dotlottie) {
                       if (dotlottie != null &&
                           dotlottie.animations.isNotEmpty) {
-                        // Animasyon var, göster
                         return Lottie.memory(dotlottie.animations.values.first);
                       } else {
-                        // Animasyon yoksa bir yükleme göstergesi göster
                         return Center(child: CircularProgressIndicator());
                       }
                     },

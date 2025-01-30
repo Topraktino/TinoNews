@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'news_provider.dart';
+import '../providers/news_provider.dart';
 import 'add_news_screen.dart';
 import 'news_detail.dart';
 
@@ -23,10 +23,8 @@ class NewsPage extends StatefulWidget {
 class _NewsPageState extends State<NewsPage> {
   bool darkMode = false;
 
-  // Dil seçeneği (Türkçe varsayılan)
   String currentLanguage = 'tr';
 
-  // Dil Kaynakları
   final Map<String, Map<String, String>> localizedStrings = {
     'tr': {
       'title': 'Haberler',
@@ -57,9 +55,9 @@ class _NewsPageState extends State<NewsPage> {
         backgroundColor: darkMode ? Colors.black : Colors.blue,
         title: Image.asset(
           'assets/images/logo.png',
-          height: 80, // Logonun yüksekliği
+          height: 80,
         ),
-        centerTitle: true, // Logo AppBar'ın ortasına hizalanır
+        centerTitle: true,
         actions: [
           IconButton(
             icon: Icon(darkMode ? Icons.dark_mode : Icons.light_mode),
@@ -86,7 +84,7 @@ class _NewsPageState extends State<NewsPage> {
               );
 
               if (result == true) {
-                setState(() {}); // Ekranı yenile
+                setState(() {});
               }
             },
           ),

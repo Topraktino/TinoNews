@@ -23,14 +23,13 @@ class NewsProvider with ChangeNotifier {
     try {
       return Platform.isWindows || Platform.isLinux || Platform.isMacOS;
     } catch (e) {
-      return false; // Web ortamında çalışıyorsa false döndür
+      return false;
     }
   }
 
   Future<Directory> getDocumentsDirectory() async {
     if (isDesktop()) {
-      return Directory(
-          '${Directory.current.path}/news_data'); // 📌 Masaüstü için özel yol
+      return Directory('${Directory.current.path}/news_data');
     } else {
       return await getApplicationDocumentsDirectory();
     }

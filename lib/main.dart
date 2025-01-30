@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'core/routes.dart';
-import 'screens/news_provider.dart';
+import 'providers/news_provider.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized(); // Flutter widget'larını başlat
