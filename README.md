@@ -71,6 +71,9 @@ lib/
 
 ```
 
+## DEMO VİDEO
+https://youtu.be/qPjdAW_WzXA
+
   
 
 ## Ekran Görüntüleri
