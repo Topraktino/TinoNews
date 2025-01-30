@@ -19,7 +19,7 @@ dependencies:
   image_picker: ^0.8.7+4
   file_picker: ^8.1.7
   path_provider: ^2.1.2 
-  google_fonts: ^6.1.0
+  google_fonts: ^4.0.3
 
 dev_dependencies:
   flutter_test:
@@ -32,4 +32,4 @@ flutter:
     - assets/images/            # Görseller için
     - assets/icons/             # İkonlar için
     - assets/motions/           # Animasyon dosyaları için
-    - assets/data/news.json 
+    - assets/data/news.json     # Haberleri buraya kaydetmek için

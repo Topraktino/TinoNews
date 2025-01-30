@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart'; // Google Fonts ekleyin
 
 class NewsDetail extends StatelessWidget {
   final String title;
@@ -11,7 +12,10 @@ class NewsDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: Text(
+          title,
+          style: GoogleFonts.poppins(), // Poppins fontu ekleyin
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -21,14 +25,19 @@ class NewsDetail extends StatelessWidget {
               imagePath,
               width: double.infinity,
               fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) =>
-                  const Text('Resim yüklenemedi'),
+              errorBuilder: (context, error, stackTrace) => Text(
+                'Resim yüklenemedi',
+                style: GoogleFonts.poppins(), // Poppins fontu ekleyin
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(15),
               child: Text(
                 description,
-                style: const TextStyle(fontSize: 16),
+                style: GoogleFonts.poppins(
+                  // Poppins fontu ekleyin
+                  fontSize: 16,
+                ),
               ),
             ),
           ],
