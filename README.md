@@ -30,7 +30,7 @@ https://github.com/Topraktino
 
 - [Detaylı ve açıklayıcı haberler]
 
-- [Ana özellik 3]
+- [Artık ana ekrandan haber ekleyebiliyoruz]
 
   
 
