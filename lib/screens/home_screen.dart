@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:google_fonts/google_fonts.dart'; // Google Fonts ekleyin
+import 'package:google_fonts/google_fonts.dart';
 import '../providers/news_provider.dart';
 import 'add_news_screen.dart';
 import 'news_detail.dart';
@@ -97,7 +97,7 @@ class _NewsPageState extends State<NewsPage> {
               ? Center(
                   child: Text(
                     translate('noNews'),
-                    style: GoogleFonts.poppins(), // Poppins fontu ekleyin
+                    style: GoogleFonts.poppins(),
                   ),
                 )
               : ListView.builder(
@@ -170,7 +170,6 @@ class NewsCard extends StatelessWidget {
                 Text(
                   title,
                   style: GoogleFonts.poppins(
-                    // Poppins fontu ekleyin
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
@@ -179,7 +178,6 @@ class NewsCard extends StatelessWidget {
                 Text(
                   description,
                   style: GoogleFonts.poppins(
-                    // Poppins fontu ekleyin
                     color: Colors.grey,
                   ),
                 ),

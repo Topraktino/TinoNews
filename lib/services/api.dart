@@ -19,7 +19,8 @@ class ApiService {
     if (response.statusCode == 200) {
       return json.decode(response.body);
     } else {
-      throw Exception("Hava durumu verisi alınamadı!");
+      throw Exception(
+          "Hava durumu verisi alınamadı!"); // TRIED TO ADDED WEATHER API BUT CAN'T DO IT...
     }
   }
 }

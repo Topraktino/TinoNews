@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:google_fonts/google_fonts.dart'; // Google Fonts ekleyin
+import 'package:google_fonts/google_fonts.dart';
 import '../providers/news_provider.dart';
 
 class AddNewsScreen extends StatefulWidget {
@@ -28,7 +28,7 @@ class _AddNewsScreenState extends State<AddNewsScreen> {
                     'tr'
                 ? 'Lütfen tüm alanları doldurun!'
                 : 'Please fill in all fields!',
-            style: GoogleFonts.poppins(), // Poppins fontu ekleyin
+            style: GoogleFonts.poppins(),
           ),
         ),
       );
@@ -49,7 +49,7 @@ class _AddNewsScreenState extends State<AddNewsScreen> {
                   'tr'
               ? 'Haber başarıyla eklendi!'
               : 'News added successfully!',
-          style: GoogleFonts.poppins(), // Poppins fontu ekleyin
+          style: GoogleFonts.poppins(),
         ),
       ),
     );
@@ -68,7 +68,7 @@ class _AddNewsScreenState extends State<AddNewsScreen> {
                   'tr'
               ? 'Haber Ekle'
               : 'Add News',
-          style: GoogleFonts.poppins(), // Poppins fontu ekleyin
+          style: GoogleFonts.poppins(),
         ),
       ),
       body: Padding(
@@ -85,9 +85,9 @@ class _AddNewsScreenState extends State<AddNewsScreen> {
                           'tr'
                       ? "Başlık"
                       : "Title",
-                  labelStyle: GoogleFonts.poppins(), // Poppins fontu ekleyin
+                  labelStyle: GoogleFonts.poppins(),
                 ),
-                style: GoogleFonts.poppins(), // Poppins fontu ekleyin
+                style: GoogleFonts.poppins(),
               ),
               const SizedBox(height: 10),
               TextField(
@@ -98,9 +98,9 @@ class _AddNewsScreenState extends State<AddNewsScreen> {
                           'tr'
                       ? 'Açıklama'
                       : 'Description',
-                  labelStyle: GoogleFonts.poppins(), // Poppins fontu ekleyin
+                  labelStyle: GoogleFonts.poppins(),
                 ),
-                style: GoogleFonts.poppins(), // Poppins fontu ekleyin
+                style: GoogleFonts.poppins(),
               ),
               const SizedBox(height: 10),
               TextField(
@@ -111,9 +111,9 @@ class _AddNewsScreenState extends State<AddNewsScreen> {
                           'tr'
                       ? 'Detaylar'
                       : 'Details',
-                  labelStyle: GoogleFonts.poppins(), // Poppins fontu ekleyin
+                  labelStyle: GoogleFonts.poppins(),
                 ),
-                style: GoogleFonts.poppins(), // Poppins fontu ekleyin
+                style: GoogleFonts.poppins(),
                 maxLines: 5,
               ),
               const SizedBox(height: 10),
@@ -125,9 +125,9 @@ class _AddNewsScreenState extends State<AddNewsScreen> {
                           'tr'
                       ? "Resim URL'si"
                       : "Image URL",
-                  labelStyle: GoogleFonts.poppins(), // Poppins fontu ekleyin
+                  labelStyle: GoogleFonts.poppins(),
                 ),
-                style: GoogleFonts.poppins(), // Poppins fontu ekleyin
+                style: GoogleFonts.poppins(),
               ),
               const SizedBox(height: 20),
               Center(
@@ -139,7 +139,7 @@ class _AddNewsScreenState extends State<AddNewsScreen> {
                             'tr'
                         ? 'OK'
                         : 'OK',
-                    style: GoogleFonts.poppins(), // Poppins fontu ekleyin
+                    style: GoogleFonts.poppins(),
                   ),
                 ),
               ),

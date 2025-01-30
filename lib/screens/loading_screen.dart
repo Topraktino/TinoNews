@@ -2,7 +2,7 @@ import 'package:dotlottie_loader/dotlottie_loader.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
-import 'package:google_fonts/google_fonts.dart'; // Google Fonts ekleyin
+import 'package:google_fonts/google_fonts.dart';
 
 import '../core/constants.dart';
 
@@ -55,7 +55,6 @@ class LoadingScreen extends StatelessWidget {
                 Text(
                   'Yükleniyor...',
                   style: GoogleFonts.poppins(
-                    // Poppins fontu ekleyin
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),

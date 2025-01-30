@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart'; // Google Fonts ekleyin
+import 'package:google_fonts/google_fonts.dart';
 
 class NewsDetail extends StatelessWidget {
   final String title;
@@ -14,7 +14,7 @@ class NewsDetail extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           title,
-          style: GoogleFonts.poppins(), // Poppins fontu ekleyin
+          style: GoogleFonts.poppins(),
         ),
       ),
       body: SingleChildScrollView(
@@ -27,7 +27,7 @@ class NewsDetail extends StatelessWidget {
               fit: BoxFit.cover,
               errorBuilder: (context, error, stackTrace) => Text(
                 'Resim yüklenemedi',
-                style: GoogleFonts.poppins(), // Poppins fontu ekleyin
+                style: GoogleFonts.poppins(),
               ),
             ),
             Padding(
@@ -35,7 +35,6 @@ class NewsDetail extends StatelessWidget {
               child: Text(
                 description,
                 style: GoogleFonts.poppins(
-                  // Poppins fontu ekleyin
                   fontSize: 16,
                 ),
               ),

@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:google_fonts/google_fonts.dart'; // Google Fonts ekleyin
+import 'package:google_fonts/google_fonts.dart';
 import 'core/routes.dart';
 import 'providers/news_provider.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized(); // Flutter widget'larını başlat
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-            create: (context) => NewsProvider()), // NewsProvider'ı ekle
+        ChangeNotifierProvider(create: (context) => NewsProvider()),
       ],
       child: const MyApp(),
     ),
@@ -28,12 +27,11 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
         textTheme: GoogleFonts.poppinsTextTheme(
-          // Poppins fontu ekleyin
           Theme.of(context).textTheme,
         ),
       ),
-      routerConfig: router, // go_router yapılandırmamızı kullan
-      debugShowCheckedModeBanner: false, // Debug bandını kaldır
+      routerConfig: router,
+      debugShowCheckedModeBanner: false,
     );
   }
 }
