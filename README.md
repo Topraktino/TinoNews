@@ -72,7 +72,7 @@ lib/
 ```
 
 ## DEMO VİDEO
-https://youtu.be/qPjdAW_WzXA
+https://github.com/user-attachments/assets/253dde55-fa5a-4378-a4b4-71cefec30eef
 
   
 
